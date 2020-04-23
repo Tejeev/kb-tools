@@ -1,0 +1,4 @@
+AUTHOR="tj@rancher.com"
+VIS="signed-in-users"
+REPO="git@github.com:Tejeev/support-kb.git"
+UPSTREAM="git@github.com:rancherlabs/support-kb.git"
