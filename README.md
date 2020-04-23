@@ -8,7 +8,7 @@ KB-TOOLS
 
 ## SYNOPSIS
 
-    create-article.sh [**-q**|**-i**|**-h**][**"**Quotes encapsuled article name**"**]
+    create-article.sh [-q|-i|-h]["Quotes encapsuled article name"]
     reset-to-upstream.sh
     setup-kb-local-repo.sh
 
@@ -18,9 +18,9 @@ KB-TOOLS
 
 
 ## OPTIONS
-    **-q**, **--question**  Create article in question group
-    **-i**, **--issue**     Create article in issue group
-    **-h**, **--howto**     Create article in how-to group
+    -q, --question  Create article in question group
+    -i, --issue     Create article in issue group
+    -h, --howto     Create article in how-to group
 
 ## USAGE
     All tools are created to be run from the `kb-tools` directory and will create and manage the `support-kb` directory along side them.  
