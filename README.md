@@ -38,7 +38,7 @@ KB-TOOLS
     +----------------------------------------+
     
     
-    1. Creat a parent directory for your knowledge base and pull `kb-tools` into it
+    1. Creat a directory for your knowledge base then from inside it, clone `kb-tools`
     2. cd into kb-tools
     3. Set configurations in `configs`
     4. ./setup-kb-local-repo.sh
