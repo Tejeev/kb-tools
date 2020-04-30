@@ -51,7 +51,7 @@ echo "draft: false" >> $FOLDER/__article__.yaml
 
 
 # Write the article
-cp ../support-kb/templates/$TEMPLATE.md "$FOLDER/README.md"
+cp ../support-kb/templates/$TEMPLATE/README.md "$FOLDER/README.md"
 
 echo "created and populated $(readlink -f kbase/knowledge-base/$TEMPLATE/$SNAME) with template.  Opening file in system default editor"
 ${VISUAL:-${EDITOR:-vi}} $FILE
