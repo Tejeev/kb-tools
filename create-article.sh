@@ -59,11 +59,9 @@ ${VISUAL:-${EDITOR:-vi}} $FILE
 # Stage changes to the article and finish 
 git add $FOLDER
 git commit -m \"Add article: $NAME\"
+git push origin $SNAME
+
 echo "##########################################################"
-echo "Done editing.  Changes have been commited. You can now add attachments or make changes befor committing and pushing or start another article."
-echo "Here is an example workflow which you can copy and paste to run"
-echo ```
-echo "cd $FOLDER"
-echo "git push origin $SNAME"
-echo "./reset-to-upstream.sh"
-echo ```
+echo "Done editing.  Changes have been commited and pushed to your fork-branch. You can now add attachments or make changes before committing and pushing or just create another article and come back to this branch later."
+echo
+echo "You can now resync to the main KB branch by running ./reset-to-upstream.sh and/or file your pull request from github"
