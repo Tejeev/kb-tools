@@ -58,10 +58,12 @@ ${VISUAL:-${EDITOR:-vi}} $FILE
 
 # Stage changes to the article and finish 
 git add $FOLDER
+git commit -m \"Add article: $NAME\"
 echo "##########################################################"
-echo "Done editing.  You can now add attachments or commit and push.  Here is an example workflow:"
-echo 
+echo "Done editing.  Changes have been commited. You can now add attachments or make changes befor committing and pushing or start another article."
+echo "Here is an example workflow which you can copy and paste to run"
+echo ```
 echo "cd $FOLDER"
-echo "git commit -m \"Add article: $NAME\""
 echo "git push origin $SNAME"
 echo "./reset-to-upstream.sh"
+echo ```
