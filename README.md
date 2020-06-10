@@ -22,6 +22,13 @@ KB-TOOLS
     -i, --issue     Create article in issue group
     -h, --howto     Create article in how-to group
 
+## PREREQUISITES
+    MacOS:
+      slugify - `brew install slugify`
+      greadlink - `brew install coreutils`
+      gsed - `brew install gnu-sed`
+
+
 ## USAGE
     All tools are created to be run from the `kb-tools` directory and will create and manage the `support-kb` directory along side them.  
 
