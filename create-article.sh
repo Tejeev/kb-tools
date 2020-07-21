@@ -18,12 +18,21 @@ shift
 NAME=${1?What is the name of your article}
 WD=$PWD
 
+#use GNU sed and readlink on macos
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  SED_CMD='gsed'
+  READLINK_CMD='greadlink'
+else
+  SED_CMD='sed'
+  READLINK_CMD='readlink'
+fi
+
 # slugify the name
 slugify () {
   echo "$1" |
   iconv -t ascii//TRANSLIT |
-  sed -r s/[^a-zA-Z0-9]+/-/g |
-  sed -r s/^-+\|-+$//g |
+  $SED_CMD -r s/[^a-zA-Z0-9]+/-/g |
+  $SED_CMD -r s/^-+\|-+$//g |
   tr A-Z a-z
 }
 SNAME="$(slugify "$NAME")"
@@ -38,7 +47,7 @@ git checkout -b "$SNAME"
 
 
 # Declare folder and file variables
-FOLDER="$(readlink -f kbase/knowledge-base/$TEMPLATE/$SNAME)"
+FOLDER="$($READLINK_CMD -f kbase/knowledge-base/$TEMPLATE/$SNAME)"
 FILE="$FOLDER/README.md"
 
 
@@ -53,7 +62,7 @@ echo "draft: false" >> $FOLDER/__article__.yaml
 # Write the article
 cp ../support-kb/templates/$TEMPLATE/README.md "$FOLDER/README.md"
 
-echo "created and populated $(readlink -f kbase/knowledge-base/$TEMPLATE/$SNAME) with template.  Opening file in system default editor"
+echo "created and populated $($READLINK_CMD -f kbase/knowledge-base/$TEMPLATE/$SNAME) with template.  Opening file in system default editor"
 ${VISUAL:-${EDITOR:-vi}} $FILE
 
 echo "Commit and push to your feature branch?"
