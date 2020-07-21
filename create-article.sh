@@ -56,12 +56,22 @@ cp ../support-kb/templates/$TEMPLATE/README.md "$FOLDER/README.md"
 echo "created and populated $(readlink -f kbase/knowledge-base/$TEMPLATE/$SNAME) with template.  Opening file in system default editor"
 ${VISUAL:-${EDITOR:-vi}} $FILE
 
-# Stage changes to the article and finish 
-git add $FOLDER
-git commit -m \"Add article: $NAME\"
-git push origin $SNAME
+echo "Commit and push to your feature branch?"
+select yn in "Yes" "No"; do
+    case $yn in
+        # If yes, stage changes to the article, push, and add to list of articles you've written
+        Yes ) echo "updating my-articles.list"
+          echo $FOLDER >> ../kb-tools/my-articles.list ; 
+          echo "adding, commiting, and pushing"
+          git add $FOLDER ;
+          git commit -m \"Add article: $NAME\" ;
+          git push origin $SNAME ;
+          echo "##########################################################"
+          echo "Done editing.  Changes have been commited and pushed to your fork-branch. You can now add attachments or make changes before committing and pushing or just create another article and come back to this branch later."
+          echo
+          echo "You can now resync to the main KB branch by running ./reset-to-upstream.sh and/or file your pull request from github"
+          break;;
+        No ) echo "no changes have been staged or committed.  The support-kb directory is still on your feature branch" ; exit;;
+    esac
+done
 
-echo "##########################################################"
-echo "Done editing.  Changes have been commited and pushed to your fork-branch. You can now add attachments or make changes before committing and pushing or just create another article and come back to this branch later."
-echo
-echo "You can now resync to the main KB branch by running ./reset-to-upstream.sh and/or file your pull request from github"
