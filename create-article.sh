@@ -71,10 +71,16 @@ select yn in "Yes" "No"; do
         # If yes, stage changes to the article, push, and add to list of articles you've written
         Yes ) echo "updating my-articles.list"
           echo $FOLDER >> ../kb-tools/my-articles.list ; 
-          echo "adding, commiting, and pushing"
+          
+          echo "adding"
           git add $FOLDER ;
+          
+          echo "commiting"
           git commit -m \"Add article: $NAME\" ;
+          
+          echo "pushing"
           git push origin $SNAME ;
+          
           echo "##########################################################"
           echo "Done editing.  Changes have been commited and pushed to your fork-branch. You can now add attachments or make changes before committing and pushing or just create another article and come back to this branch later."
           echo
