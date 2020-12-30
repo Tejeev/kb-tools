@@ -2,7 +2,9 @@
 
 # Need to add attachments
 #set -xv
+
 unset TEMPLATE FILE NAME SNAME
+ARGS=( "$@" )
 
 DEBUG_variables(){
   echo "== VARIABLES =="
@@ -15,6 +17,9 @@ DEBUG_variables(){
 }
 
 DEBUG_options(){
+  echo "arg 0 ${ARGS[0]}"
+  echo "arg 1 ${ARGS[1]}"
+  echo "arg 2 ${ARGS[2]}"
   echo "== OPTIONS =="
   echo "0 $0"
   echo "1 $1"
@@ -24,10 +29,10 @@ DEBUG_options(){
 }
 
 main() {
-#  TYPE=( "$1" )
   set_os_dependent_commands
-#  DEBUG_variables
   read_options 
+  #  TYPE=( "$1" )
+  #  DEBUG_variables
 #  set_environment $2
 #  refresh
 #  DEBUG_variables
@@ -50,24 +55,15 @@ set_os_dependent_commands() {
 
 # Read in options from CLI and create branch
 read_options(){
-  DEBUG_options
-  echo "== OPTIONS =="
-  echo "0 $0"
-  echo $BASH_ARGV[1]
-  echo "1 $1"
-  echo "2 $2"
-  echo "3 $3"
-  echo "== options =="
-
-  DEBUG_variables 
-  if [ $# -eq 0 ]
+DEBUG_options
+  if [ ${#ARGS[@]} -eq 0 ]
   then
     echo "No arguments supplied"
-  elif [ !"$2" ]; then
+  elif [ -z "${ARGS[1]}"]; then
     echo "no article name provided"
     exit 1
   else
-    case $1 in
+    case ${ARGS[0]} in
       -q | --question )
         TEMPLATE=question
         create_branch
@@ -212,5 +208,4 @@ close_out(){
   done
 }
 
-Args=( "$@" )
 main 
