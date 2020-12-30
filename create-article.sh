@@ -4,7 +4,7 @@
 #set -xv
 unset TEMPLATE FILE NAME SNAME
 
-debug_variables(){
+DEBUG_variables(){
   echo "== VARIABLES =="
   echo "Options: $TYPE $NAME"
   echo "Names: $NAME $SNAME"
@@ -14,7 +14,7 @@ debug_variables(){
   echo "== variables =="
 }
 
-debug_options(){
+DEBUG_options(){
   echo "== OPTIONS =="
   echo "0 $0"
   echo "1 $1"
@@ -26,11 +26,11 @@ debug_options(){
 main() {
 #  TYPE=( "$1" )
   set_os_dependent_commands
-#  debug_variables
-  read_options $@
+#  DEBUG_variables
+  read_options
 #  set_environment $2
 #  refresh
-#  debug_variables
+#  DEBUG_variables
 #  create_article
 }
 
@@ -50,8 +50,8 @@ set_os_dependent_commands() {
 
 # Read in options from CLI and create branch
 read_options(){
-  debug_options
-  debug_variables 
+  DEBUG_options
+  DEBUG_variables 
   if [ $# -eq 0 ]
   then
     echo "No arguments supplied"
