@@ -4,8 +4,8 @@
 #set -xv
 unset TEMPLATE FILE NAME SNAME
 
-read_variables(){
-  echo "== variables =="
+debug_variables(){
+  echo "== VARIABLES =="
   echo "Options: $TYPE $NAME"
   echo "Names: $NAME $SNAME"
   echo "Working Directory: $WD"
@@ -14,15 +14,23 @@ read_variables(){
   echo "== variables =="
 }
 
+debug_options(){
+  echo "== OPTIONS =="
+  echo "0 $0"
+  echo "1 $1"
+  echo "2 $2"
+  echo "3 $3"
+  echo "== options =="
+}
 
 main() {
 #  TYPE=( "$1" )
   set_os_dependent_commands
+#  debug_variables
   read_options $@
 #  set_environment $2
-#  read_variables
 #  refresh
-#  read_variables
+#  debug_variables
 #  create_article
 }
 
@@ -42,11 +50,8 @@ set_os_dependent_commands() {
 
 # Read in options from CLI and create branch
 read_options(){
-  echo "0 $0"
-  echo "1 $1"
-  echo "2 $2"
-  echo "3 $3"
-  
+  debug_options
+  debug_variables 
   if [ $# -eq 0 ]
   then
     echo "No arguments supplied"
