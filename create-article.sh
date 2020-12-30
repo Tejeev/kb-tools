@@ -27,7 +27,7 @@ main() {
 #  TYPE=( "$1" )
   set_os_dependent_commands
 #  DEBUG_variables
-  read_options
+  read_options 
 #  set_environment $2
 #  refresh
 #  DEBUG_variables
@@ -51,6 +51,14 @@ set_os_dependent_commands() {
 # Read in options from CLI and create branch
 read_options(){
   DEBUG_options
+  echo "== OPTIONS =="
+  echo "0 $0"
+  echo $BASH_ARGV[1]
+  echo "1 $1"
+  echo "2 $2"
+  echo "3 $3"
+  echo "== options =="
+
   DEBUG_variables 
   if [ $# -eq 0 ]
   then
@@ -204,5 +212,5 @@ close_out(){
   done
 }
 
-
-main "$@"
+Args=( "$@" )
+main 
