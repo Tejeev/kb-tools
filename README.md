@@ -12,7 +12,7 @@ KB-TOOLS
     reset-to-upstream.sh
     setup-kb-local-repo.sh
 
-## DESCPRITION
+## DESCRIPTION
     This manual page documents the set of scripts in kb-tools 
     - `create-article.sh`
     - `reset-to-upstream.sh`
@@ -49,12 +49,12 @@ KB-TOOLS
     +----------------------------------------+
     
     
-    1. Creat a directory for your knowledge base then from inside it, clone `kb-tools`
+    1. Create a directory for your knowledge base then from inside it, clone `kb-tools`
     2. cd into kb-tools
     3. Set configurations in `configs`
     4. ./setup-kb-local-repo.sh
     5. ./create-article.sh -q "What is kb-tools?"
-    6. Write or paste in article, add attachments directory manually and fill with any needed attachments, then close editor when article is done
+    6. Write "or paste" your article, add attachments directory manually and fill with any needed attachments, then close editor when article is done
     7. Copy commands returned by create-article and paste in terminal.  You can run them all at once to push the article and clear your workspace, or evaluate and run one at a time.
 
 
@@ -67,9 +67,9 @@ KB-TOOLS
     
     
     create-article.sh  
-      Takes an option to choose article category and a title for the article, encapsulated in quotes.  
+      Takes an option to choose the article category and a title for the article, encapsulated in quotes.  
       It will refresh the repo, create a feature branch, create the necessary directory, create 
-      \_\_article\_\_.yaml, copy in the appropriate article template, and opens it in your default editor.
+      \_\_article\_\_.yaml, copy in the appropriate article template and opens it in your default editor.
       
       **Note: you should add your attachments manually while writing the article or just remember to run
       `git add` for the directory before commiting and pushing**  
